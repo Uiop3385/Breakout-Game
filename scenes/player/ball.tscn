@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://cpbcjnfrbck0x"]
+
+[ext_resource type="Script" path="res://scripts/player/ball_class.gd" id="1_51ihn"]
+[ext_resource type="AudioStream" uid="uid://dg6458ve3ykd7" path="res://game_assets/sfx/bounce.wav" id="2_8j757"]
+[ext_resource type="Texture2D" uid="uid://c00okgo2qi3u2" path="res://game_assets/textures/player/ball.png" id="2_jnv3i"]
+[ext_resource type="Script" path="res://scripts/trail_class.gd" id="3_5lh8s"]
+[ext_resource type="AudioStream" uid="uid://cwlic4l66skao" path="res://game_assets/sfx/death.wav" id="3_bv3pw"]
+
+[sub_resource type="Curve" id="Curve_hn268"]
+min_value = 0.2
+_data = [Vector2(0, 0.2), 0.0, 1.12, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_1ej5n"]
+colors = PackedColorArray(0.592157, 0.709804, 0.988235, 0, 0.878902, 0.878754, 0.866069, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pa256"]
+radius = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r380k"]
+radius = 8.0
+
+[node name="Ball" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_51ihn")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.313726)
+z_index = -1
+position = Vector2(16, 16)
+texture = ExtResource("2_jnv3i")
+
+[node name="Trail" type="Line2D" parent="."]
+top_level = true
+z_index = -1
+position = Vector2(8, 8)
+points = PackedVector2Array(8, 8, 32, 32, 48, 16)
+width_curve = SubResource("Curve_hn268")
+gradient = SubResource("Gradient_1ej5n")
+joint_mode = 2
+end_cap_mode = 2
+script = ExtResource("3_5lh8s")
+max_points = 100
+
+[node name="Ball" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("2_jnv3i")
+
+[node name="Paddle Collision Shape" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("CircleShape2D_pa256")
+
+[node name="Brick Collision Shape" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("CircleShape2D_r380k")
+debug_color = Color(0.905882, 0.282353, 0.305882, 0.419608)
+
+[node name="BallCenter" type="Marker2D" parent="."]
+position = Vector2(8, 8)
+
+[node name="BounceSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8j757")
+
+[node name="DeathSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bv3pw")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://6ob7n1n342we"]
+
+[ext_resource type="Script" path="res://scripts/player/paddle_control.gd" id="1_h6aj3"]
+
+[sub_resource type="Gradient" id="Gradient_sirex"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lq3wb"]
+gradient = SubResource("Gradient_sirex")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xp44w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k211n"]
+size = Vector2(128, 16)
+
+[node name="Paddle" type="StaticBody2D"]
+script = ExtResource("1_h6aj3")
+speed = 325
+dead_zone = 32
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.313726)
+position = Vector2(72, 16)
+scale = Vector2(0.5, 16.5)
+texture = SubResource("GradientTexture1D_lq3wb")
+
+[node name="Paddle" type="Sprite2D" parent="."]
+position = Vector2(64, 8)
+scale = Vector2(128, 16)
+texture = SubResource("CanvasTexture_xp44w")
+
+[node name="Ball Collision Shape" type="CollisionShape2D" parent="."]
+position = Vector2(64, 0)
+shape = SubResource("RectangleShape2D_k211n")
+
+[node name="PaddleCenter" type="Marker2D" parent="."]
+position = Vector2(64, 4)

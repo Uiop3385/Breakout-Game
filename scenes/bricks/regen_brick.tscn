@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx5v6wouo0bud"]
+
+[ext_resource type="Script" path="res://scripts/bricks/regen_brick_class.gd" id="1_1vw35"]
+
+[sub_resource type="Gradient" id="Gradient_ffr23"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rkw55"]
+gradient = SubResource("Gradient_ffr23")
+width = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhgv3"]
+size = Vector2(64, 32)
+
+[node name="RegenBrick" type="StaticBody2D" groups=["bricks"]]
+script = ExtResource("1_1vw35")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.313726)
+y_sort_enabled = true
+position = Vector2(40, 24)
+scale = Vector2(6.4, 32)
+texture = SubResource("GradientTexture1D_rkw55")
+
+[node name="Brick" type="Sprite2D" parent="."]
+position = Vector2(32, 16)
+scale = Vector2(2, 2)
+
+[node name="Ball Collision Shape" type="CollisionShape2D" parent="."]
+position = Vector2(32, 16)
+shape = SubResource("RectangleShape2D_rhgv3")
+debug_color = Color(0.819608, 0, 0.117647, 0.419608)
+
+[node name="BreakSFX" type="AudioStreamPlayer" parent="."]
+volume_db = -4.0
+
+[node name="HitSFX" type="AudioStreamPlayer" parent="."]
+volume_db = 4.0
+
+[node name="RegenSFX" type="AudioStreamPlayer" parent="."]
+volume_db = 4.0
+
+[node name="RegenTimer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="RegenStartedTimer" type="Timer" parent="."]
+
+[connection signal="brick_destroyed" from="." to="." method="_on_brick_destroyed"]
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
+[connection signal="timeout" from="RegenStartedTimer" to="." method="_on_regen_started_timer_timeout"]

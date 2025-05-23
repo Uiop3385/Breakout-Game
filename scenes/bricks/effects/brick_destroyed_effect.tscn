@@ -1,0 +1,145 @@
+[gd_scene load_steps=20 format=3 uid="uid://b2tjsmedlm85w"]
+
+[ext_resource type="Texture2D" uid="uid://dmsjd7ayanx61" path="res://game_assets/textures/bricks/effects/base_brick_break.png" id="1_8jrp3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nbw2"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvyji"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvcc6"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f73q7"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgxem"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(32, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugwus"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(64, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d1bs"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(0, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1njs"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(32, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exl5b"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(64, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2rck"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(0, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2eww"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(32, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxg8w"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(64, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gycl"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(0, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekd4c"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(32, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwe58"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(64, 64, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1kbx"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(0, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwdg0"]
+atlas = ExtResource("1_8jrp3")
+region = Rect2(32, 80, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1xrp1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nbw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvyji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvcc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f73q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgxem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugwus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d1bs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1njs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exl5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2rck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2eww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxg8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gycl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekd4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwe58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1kbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwdg0")
+}],
+"loop": false,
+"name": &"break",
+"speed": 17.0
+}]
+
+[node name="BrickDestroyedEffect" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1xrp1")
+animation = &"break"
+autoplay = "break"
+centered = false
+
+[node name="DestroyedEffectShadow" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.313726)
+show_behind_parent = true
+position = Vector2(20, 12)
+sprite_frames = SubResource("SpriteFrames_1xrp1")
+animation = &"break"
+autoplay = "break"

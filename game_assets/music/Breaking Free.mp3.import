@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://byyd8py6pw1ns"
+path="res://.godot/imported/Breaking Free.mp3-ae96f84a79834a09542a07843a1bb0c6.mp3str"
+
+[deps]
+
+source_file="res://game_assets/music/Breaking Free.mp3"
+dest_files=["res://.godot/imported/Breaking Free.mp3-ae96f84a79834a09542a07843a1bb0c6.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=1.0
+bpm=0.0
+beat_count=0
+bar_beats=4

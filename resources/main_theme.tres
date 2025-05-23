@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://c80hjsi1ys81q"]
+
+[ext_resource type="Texture2D" uid="uid://cwu147mhk0831" path="res://game_assets/ui/GUI.png" id="1_tn8ek"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faemv"]
+atlas = ExtResource("1_tn8ek")
+region = Rect2(113, 113, 30, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_js80q"]
+texture = SubResource("AtlasTexture_faemv")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8hah"]
+atlas = ExtResource("1_tn8ek")
+region = Rect2(113, 81, 30, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ykk3u"]
+texture = SubResource("AtlasTexture_a8hah")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub5na"]
+atlas = ExtResource("1_tn8ek")
+region = Rect2(113, 81, 30, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hyby6"]
+texture = SubResource("AtlasTexture_ub5na")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5agbn"]
+load_path = "res://.godot/imported/GUI.png-4df6843f33421c784006d2e0612f931d.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3ans"]
+atlas = SubResource("CompressedTexture2D_5agbn")
+region = Rect2(113, 81, 30, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_as12c"]
+texture = SubResource("AtlasTexture_j3ans")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dd3yd"]
+load_path = "res://.godot/imported/GUI.png-4df6843f33421c784006d2e0612f931d.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t6rr"]
+atlas = SubResource("CompressedTexture2D_dd3yd")
+region = Rect2(113, 97, 30, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tb2hw"]
+texture = SubResource("AtlasTexture_1t6rr")
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxTexture_js80q")
+Button/styles/focus = SubResource("StyleBoxTexture_ykk3u")
+Button/styles/hover = SubResource("StyleBoxTexture_hyby6")
+Button/styles/normal = SubResource("StyleBoxTexture_as12c")
+Button/styles/pressed = SubResource("StyleBoxTexture_tb2hw")

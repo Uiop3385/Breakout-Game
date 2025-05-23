@@ -1,0 +1,26 @@
+[gd_scene load_steps=19 format=3 uid="uid://umg5iah0xbik"]
+
+[ext_resource type="Script" path="res://scripts/cursor_setup.gd" id="1_a640r"]
+[ext_resource type="Texture2D" uid="uid://cwwfa5acgaulw" path="res://game_assets/textures/cursor/CURSOR_ARROW.png" id="2_gugm0"]
+[ext_resource type="Texture2D" uid="uid://dwpm77fixkdhc" path="res://game_assets/textures/cursor/CURSOR_BDIAGSIZE.png" id="3_bkvk7"]
+[ext_resource type="Texture2D" uid="uid://da8wdnjhcf3v1" path="res://game_assets/textures/cursor/CURSOR_BUSY.png" id="4_k1iwo"]
+[ext_resource type="Texture2D" uid="uid://d2lrgdsspd2kh" path="res://game_assets/textures/cursor/CURSOR_CAN_DROP.png" id="5_223ei"]
+[ext_resource type="Texture2D" uid="uid://jkcuiq3l7bxg" path="res://game_assets/textures/cursor/CURSOR_CROSS.png" id="6_6tds3"]
+[ext_resource type="Texture2D" uid="uid://cfieea5qi65o4" path="res://game_assets/textures/cursor/CURSOR_DRAG.png" id="7_2vy4l"]
+[ext_resource type="Texture2D" uid="uid://djgmaeysrrurs" path="res://game_assets/textures/cursor/CURSOR_FDIAGSIZE.png" id="8_mc5s7"]
+[ext_resource type="Texture2D" uid="uid://bv0637lcpceci" path="res://game_assets/textures/cursor/CURSOR_FORBIDDEN.png" id="9_whn1i"]
+[ext_resource type="Texture2D" uid="uid://dpfbcqpsvwru8" path="res://game_assets/textures/cursor/CURSOR_HELP.png" id="10_cr7wr"]
+[ext_resource type="Texture2D" uid="uid://bcnagec2ldwy" path="res://game_assets/textures/cursor/CURSOR_HSIZE.png" id="11_17oh2"]
+[ext_resource type="Texture2D" uid="uid://ctkd78l4eupqj" path="res://game_assets/textures/cursor/CURSOR_HSPLIT.png" id="12_by3m8"]
+[ext_resource type="Texture2D" uid="uid://cqwsd0n47mh47" path="res://game_assets/textures/cursor/CURSOR_IBEAM.png" id="13_8na3t"]
+[ext_resource type="Texture2D" uid="uid://ccf6gh7vkt70i" path="res://game_assets/textures/cursor/CURSOR_MOVE.png" id="14_0j2tl"]
+[ext_resource type="Texture2D" uid="uid://dbjc86xyb0d4f" path="res://game_assets/textures/cursor/CURSOR_POINTING_HAND.png" id="15_j51cs"]
+[ext_resource type="Texture2D" uid="uid://cqwdr37yqqewe" path="res://game_assets/textures/cursor/CURSOR_VSIZE.png" id="16_2hyve"]
+[ext_resource type="Texture2D" uid="uid://0qbe7pxqqoe3" path="res://game_assets/textures/cursor/CURSOR_VSPLIT.png" id="17_m3qml"]
+[ext_resource type="Texture2D" uid="uid://drco5ftk8i260" path="res://game_assets/textures/cursor/CURSOR_WAIT.png" id="18_cljom"]
+
+[node name="CursorSetup" type="Node"]
+script = ExtResource("1_a640r")
+
+[node name="CursorPreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("CURSOR_ARROW", "CURSOR_BDIAGSIZE", "CURSOR_BUSY", "CURSOR_CAN_DROP", "CURSOR_CROSS", "CURSOR_DRAG", "CURSOR_FDIAGSIZE", "CURSOR_FORBIDDEN", "CURSOR_HELP", "CURSOR_HSIZE", "CURSOR_HSPLIT", "CURSOR_IBEAM", "CURSOR_MOVE", "CURSOR_POINTING_HAND", "CURSOR_VSIZE", "CURSOR_VSPLIT", "CURSOR_WAIT"), [ExtResource("2_gugm0"), ExtResource("3_bkvk7"), ExtResource("4_k1iwo"), ExtResource("5_223ei"), ExtResource("6_6tds3"), ExtResource("7_2vy4l"), ExtResource("8_mc5s7"), ExtResource("9_whn1i"), ExtResource("10_cr7wr"), ExtResource("11_17oh2"), ExtResource("12_by3m8"), ExtResource("13_8na3t"), ExtResource("14_0j2tl"), ExtResource("15_j51cs"), ExtResource("16_2hyve"), ExtResource("17_m3qml"), ExtResource("18_cljom")]]

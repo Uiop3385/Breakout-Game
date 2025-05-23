@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://cvn21fvro7816"]
+
+[ext_resource type="Texture2D" uid="uid://foy2fulwune3" path="res://game_assets/textures/bricks/effects/block_regen_effect.png" id="1_kuijd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxf43"]
+atlas = ExtResource("1_kuijd")
+region = Rect2(0, 0, 40, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ogqm"]
+atlas = ExtResource("1_kuijd")
+region = Rect2(40, 0, 40, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbpnk"]
+atlas = ExtResource("1_kuijd")
+region = Rect2(0, 24, 40, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmo2h"]
+atlas = ExtResource("1_kuijd")
+region = Rect2(40, 24, 40, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjopk"]
+atlas = ExtResource("1_kuijd")
+region = Rect2(0, 48, 40, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj3mb"]
+atlas = ExtResource("1_kuijd")
+region = Rect2(40, 48, 40, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1oa8"]
+atlas = ExtResource("1_kuijd")
+region = Rect2(0, 72, 40, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afo7e"]
+atlas = ExtResource("1_kuijd")
+region = Rect2(40, 72, 40, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc3nk"]
+atlas = ExtResource("1_kuijd")
+region = Rect2(0, 96, 40, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8h6fs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxf43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ogqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbpnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmo2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjopk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj3mb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1oa8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afo7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc3nk")
+}],
+"loop": false,
+"name": &"regen",
+"speed": 12.0
+}]
+
+[node name="BrickRegenEffect" type="AnimatedSprite2D"]
+position = Vector2(-4.76837e-07, -4.76837e-07)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8h6fs")
+animation = &"regen"
+autoplay = "regen"
+centered = false

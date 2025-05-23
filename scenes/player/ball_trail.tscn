@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqnu8w00pbf2s"]
+
+[ext_resource type="Script" path="res://scripts/trail_class.gd" id="1_als05"]
+
+[sub_resource type="Curve" id="Curve_g0orv"]
+min_value = 0.2
+_data = [Vector2(0, 0.2), 0.0, 1.12, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_wy4s7"]
+colors = PackedColorArray(0.393028, 0.54602, 0.989522, 1, 0.057439, 0, 0.734914, 1)
+
+[node name="BallTrail" type="Line2D"]
+width = 8.0
+width_curve = SubResource("Curve_g0orv")
+gradient = SubResource("Gradient_wy4s7")
+joint_mode = 2
+end_cap_mode = 2
+round_precision = 12
+antialiased = true
+script = ExtResource("1_als05")
+max_points = 500

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxfirxxey6566"]
+
+[ext_resource type="Script" path="res://scripts/bricks/brick_base_class.gd" id="1_0jrac"]
+
+[sub_resource type="Gradient" id="Gradient_456mj"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_stihw"]
+gradient = SubResource("Gradient_456mj")
+width = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43t3j"]
+size = Vector2(64, 32)
+
+[node name="Brick" type="StaticBody2D" groups=["bricks"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_0jrac")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.313726)
+y_sort_enabled = true
+position = Vector2(40, 24)
+scale = Vector2(6.4, 32)
+texture = SubResource("GradientTexture1D_stihw")
+
+[node name="Brick" type="Sprite2D" parent="."]
+position = Vector2(32, 16)
+scale = Vector2(2, 2)
+
+[node name="Ball Collision Shape" type="CollisionShape2D" parent="."]
+position = Vector2(32, 16)
+shape = SubResource("RectangleShape2D_43t3j")
+debug_color = Color(0.819608, 0, 0.117647, 0.419608)
+
+[node name="BreakSFX" type="AudioStreamPlayer" parent="."]
+volume_db = -4.0
+
+[node name="HitSFX" type="AudioStreamPlayer" parent="."]
+volume_db = 4.0
+
+[connection signal="brick_destroyed" from="." to="." method="_on_brick_destroyed"]

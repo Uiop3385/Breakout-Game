@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck2tl8c8p8t3q"]
+
+[ext_resource type="Script" path="res://scripts/bricks/regen_brick_class.gd" id="1_hmtwi"]
+
+[node name="RegenBrickClass" type="StaticBody2D"]
+script = ExtResource("1_hmtwi")

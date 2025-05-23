@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://b4jvxra4byi2q"]
+
+[ext_resource type="Texture2D" uid="uid://d4jno7fv17caw" path="res://game_assets/textures/bricks/effects/brick_hit_effect.png" id="1_de8qc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrev0"]
+atlas = ExtResource("1_de8qc")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gq5yw"]
+atlas = ExtResource("1_de8qc")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12e5c"]
+atlas = ExtResource("1_de8qc")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uivts"]
+atlas = ExtResource("1_de8qc")
+region = Rect2(0, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0s13"]
+atlas = ExtResource("1_de8qc")
+region = Rect2(12, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12w35"]
+atlas = ExtResource("1_de8qc")
+region = Rect2(24, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r12as"]
+atlas = ExtResource("1_de8qc")
+region = Rect2(0, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2ekc"]
+atlas = ExtResource("1_de8qc")
+region = Rect2(12, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5t6w"]
+atlas = ExtResource("1_de8qc")
+region = Rect2(24, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ficfw"]
+atlas = ExtResource("1_de8qc")
+region = Rect2(0, 36, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmth4"]
+atlas = ExtResource("1_de8qc")
+region = Rect2(12, 36, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hcg5"]
+atlas = ExtResource("1_de8qc")
+region = Rect2(24, 36, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vk78d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrev0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gq5yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12e5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uivts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0s13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12w35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r12as")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2ekc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5t6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ficfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmth4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hcg5")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 20.0
+}]
+
+[node name="BrickHitEffect" type="AnimatedSprite2D"]
+position = Vector2(12, 12)
+rotation = 1.5708
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vk78d")
+animation = &"hit"
+autoplay = "hit"

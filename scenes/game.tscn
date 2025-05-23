@@ -1,0 +1,444 @@
+[gd_scene load_steps=14 format=3 uid="uid://1rdikpln8275"]
+
+[ext_resource type="Script" path="res://scripts/init.gd" id="1_domev"]
+[ext_resource type="PackedScene" uid="uid://umg5iah0xbik" path="res://scenes/cursor_setup.tscn" id="2_t7hvq"]
+[ext_resource type="AudioStream" uid="uid://byyd8py6pw1ns" path="res://game_assets/music/Breaking Free.mp3" id="2_y5xp4"]
+[ext_resource type="PackedScene" uid="uid://cxfirxxey6566" path="res://scenes/bricks/brick.tscn" id="3_bbms4"]
+[ext_resource type="Texture2D" uid="uid://bsp5gs4na8anh" path="res://game_assets/textures/bricks/base_brick.png" id="4_gotk4"]
+[ext_resource type="AudioStream" uid="uid://d3x3q2me3t5xj" path="res://game_assets/sfx/destroyed.wav" id="5_t3mjl"]
+[ext_resource type="AudioStream" uid="uid://benjlfp3poo8f" path="res://game_assets/sfx/hit.wav" id="6_mlcf6"]
+[ext_resource type="PackedScene" uid="uid://cx5v6wouo0bud" path="res://scenes/bricks/regen_brick.tscn" id="7_f13ms"]
+[ext_resource type="AudioStream" uid="uid://b7vpg38l3cwu6" path="res://game_assets/sfx/regen.wav" id="8_nslet"]
+[ext_resource type="Texture2D" uid="uid://udwo7my6av5i" path="res://game_assets/textures/bricks/base_regen_brick.png" id="9_42c17"]
+
+[sub_resource type="Gradient" id="Gradient_pr4mr"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7t65w"]
+gradient = SubResource("Gradient_pr4mr")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xi236"]
+size = Vector2(256, 1)
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_domev")
+
+[node name="CursorSetup" parent="." instance=ExtResource("2_t7hvq")]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_y5xp4")
+volume_db = -3.0
+autoplay = true
+
+[node name="Ball Spawn Point" type="Marker2D" parent="."]
+position = Vector2(504, 320)
+gizmo_extents = 15.0
+
+[node name="Paddle Spawn Point" type="Marker2D" parent="."]
+position = Vector2(448, 512)
+gizmo_extents = 15.0
+
+[node name="LeftTouchButton" type="TouchScreenButton" parent="."]
+scale = Vector2(1.5, 576)
+texture_normal = SubResource("GradientTexture1D_7t65w")
+shape = SubResource("RectangleShape2D_xi236")
+shape_visible = false
+passby_press = true
+action = "left"
+visibility_mode = 1
+
+[node name="RightTouchButton" type="TouchScreenButton" parent="."]
+position = Vector2(384, 0)
+scale = Vector2(1.5, 576)
+texture_normal = SubResource("GradientTexture1D_7t65w")
+shape = SubResource("RectangleShape2D_xi236")
+shape_visible = false
+passby_press = true
+action = "right"
+visibility_mode = 1
+
+[node name="Bricks" type="Node2D" parent="."]
+
+[node name="Brick" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(128, 96)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick2" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(192, 96)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick3" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(256, 96)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick4" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(320, 96)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick5" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(384, 96)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick6" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(448, 96)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick7" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(512, 96)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick8" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(576, 96)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick9" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(640, 96)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick10" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(704, 96)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick11" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(768, 96)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick12" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(832, 96)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick13" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(128, 128)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick14" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(192, 128)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick15" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(256, 128)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick16" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(320, 128)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick17" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(384, 128)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick18" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(448, 128)
+base_health = 3
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick19" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(512, 128)
+base_health = 3
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick20" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(576, 128)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick21" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(640, 128)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick22" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(704, 128)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick23" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(768, 128)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick24" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(832, 128)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick25" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(128, 160)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick26" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(192, 160)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick27" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(256, 160)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick28" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(320, 160)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick29" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(384, 160)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick30" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(448, 160)
+base_health = 3
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick31" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(512, 160)
+base_health = 3
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick32" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(576, 160)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick33" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(640, 160)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick34" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(704, 160)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick35" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(768, 160)
+base_health = 2
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick36" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(832, 160)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick37" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(128, 192)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick38" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(192, 192)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick39" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(256, 192)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick40" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(320, 192)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick41" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(384, 192)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick42" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(448, 192)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick43" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(512, 192)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick44" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(576, 192)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick45" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(640, 192)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick46" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(704, 192)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick47" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(768, 192)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Brick48" parent="Bricks" instance=ExtResource("3_bbms4")]
+position = Vector2(832, 192)
+base_texture = ExtResource("4_gotk4")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="RegenBrick" parent="Bricks" instance=ExtResource("7_f13ms")]
+position = Vector2(480, 224)
+regen_mode = 1
+base_regen_rate = 10
+regen_started_rate = 2
+regen_sound = ExtResource("8_nslet")
+base_health = 5
+base_texture = ExtResource("9_42c17")
+health_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0.392157, 0.835294, 1), Color(1, 0.984314, 0, 1), Color(1, 0, 0, 1), Color(0.196078, 0.196078, 0.196078, 1)])
+break_sound = ExtResource("5_t3mjl")
+hit_sound = ExtResource("6_mlcf6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0196078, 0.180392, 0, 1)
